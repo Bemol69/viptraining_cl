@@ -1,0 +1,47 @@
+{
+  "kicker": "Portugal 681 — Santiago Centro",
+  "linea1": "Transforma",
+  "linea2": "tu cuerpo.",
+  "linea3": "Eleva tu",
+  "linea4": "nivel",
+  "bajada": "Personal Training + Tecnología. Cross, Boxeo y Funcional en un gym que suena, brilla y te empuja a dar una más.",
+  "historias": [
+    {
+      "archivo": "/img/sala-completa.webp",
+      "etiqueta": "Sala de máquinas",
+      "descripcion": "Sala de máquinas de VIP Training con luces LED"
+    },
+    {
+      "archivo": "/img/clase-cross.webp",
+      "etiqueta": "Clase de Cross",
+      "descripcion": "Clase grupal de Cross Training sobre césped"
+    },
+    {
+      "archivo": "/img/peso-muerto.webp",
+      "etiqueta": "Multifuncional",
+      "descripcion": "Alumna haciendo peso muerto con barra olímpica"
+    },
+    {
+      "archivo": "/img/maquina-fuerza.webp",
+      "etiqueta": "Personal Training",
+      "descripcion": "Alumna entrenando en máquina de fuerza"
+    },
+    {
+      "archivo": "/img/familia-vip.webp",
+      "etiqueta": "Familia VIP",
+      "descripcion": "Comunidad de VIP Training reunida en el gimnasio"
+    }
+  ],
+  "franja1": [
+    "Cross",
+    "Boxeo",
+    "Funcional",
+    "Personal Training",
+    "Multifuncional"
+  ],
+  "franja2": [
+    "Eleva tu nivel",
+    "No entrenes solo",
+    "Una más"
+  ]
+}

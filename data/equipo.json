@@ -1,0 +1,47 @@
+{
+  "titulo": "No entrenes",
+  "destacado": "solo.",
+  "texto": "Entrena con guía, constancia y propósito. Toca cada nombre para conocer a tu coach.",
+  "coaches": [
+    {
+      "nombre": "Yaxi Fernández",
+      "rol": "Personal trainer",
+      "descripcion": "Personal trainer certificado. Especializado en entrenamientos para fortalecer, recuperar y desarrollar capacidades físicas de forma segura y progresiva.",
+      "foto": "/img/coach-yaxi.webp",
+      "instagram": "yxtrainer",
+      "visible": true
+    },
+    {
+      "nombre": "Freddy Berríos",
+      "rol": "Cross Training",
+      "descripcion": "Unos 13 años como entrenador. Enfoque en fuerza con movimientos funcionales, evaluación de la composición corporal y nutrición deportiva.",
+      "foto": "/img/coach-freddy.webp",
+      "instagram": "berrios__freddy",
+      "visible": true
+    },
+    {
+      "nombre": "Maanyeli Delgado",
+      "rol": "Personal trainer",
+      "descripcion": "Personal trainer certificada. Especializada en entrenamiento femenino, hipertrofia y estética corporal, con seguimiento personalizado y educación nutricional.",
+      "foto": "/img/coach-maanyeli.webp",
+      "instagram": "manyefit",
+      "visible": true
+    },
+    {
+      "nombre": "George Sánchez",
+      "rol": "Entrenador personalizado",
+      "descripcion": "Entrenador personalizado. Te acompaña desde el primer día para que entrenes con técnica y constancia, sin adivinar qué hacer.",
+      "foto": "/img/coach-george.webp",
+      "instagram": "",
+      "visible": true
+    },
+    {
+      "nombre": "Aliana González",
+      "rol": "Entrenadora personalizada",
+      "descripcion": "Entrenadora personalizada. Energía, cercanía y un plan que se adapta a ti y a tu objetivo.",
+      "foto": "/img/coach-aliana.webp",
+      "instagram": "",
+      "visible": true
+    }
+  ]
+}

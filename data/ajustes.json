@@ -1,0 +1,18 @@
+{
+  "whatsapp": "56955366758",
+  "instagram": "viptraining_cl",
+  "seguidores": 3340,
+  "direccion": "Portugal 681",
+  "comuna": "Santiago Centro",
+  "referencia": "A 3 cuadras del Metro Irarrázaval.",
+  "estacionamiento": "Fray Camilo Henríquez 640 · 1 hora y media de uso, seguro.",
+  "mapa": "VIP Training Gym, Portugal 681, Santiago, Chile",
+  "horario": {
+    "semana_abre": "06:00",
+    "semana_cierra": "22:00",
+    "sabado_abre": "08:00",
+    "sabado_cierra": "16:00",
+    "domingo_abre": "09:00",
+    "domingo_cierra": "15:00"
+  }
+}

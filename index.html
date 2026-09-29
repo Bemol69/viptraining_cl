@@ -16,8 +16,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="is-loading">
+  <!--
+    El contenido (textos, fotos, videos, coaches, flyer, horarios) vive en data/*.json
+    y se edita desde el panel /admin. app.js lo lee y arma cada sección.
+  -->
 
-  <!-- PRELOADER: se cargan los discos en la barra -->
   <div class="loader" aria-hidden="true">
     <div class="loader-bar">
       <span class="plate p-l3"></span><span class="plate p-l2"></span><span class="plate p-l1"></span>
@@ -29,7 +32,6 @@
   </div>
 
   <div class="progress" aria-hidden="true"><span></span></div>
-  <div class="cursor" aria-hidden="true"><span></span></div>
 
   <header class="nav">
     <a class="logo" href="#top" aria-label="VIP Training Gym, inicio">
@@ -46,7 +48,7 @@
     </nav>
     <div class="nav-right">
       <span class="status-chip" data-status><i></i><b>—</b></span>
-      <a class="btn btn-sm magnetic" href="https://wa.me/56955366758?text=Hola%20VIP%20Training%2C%20quiero%20empezar%20a%20entrenar" target="_blank" rel="noreferrer">Empieza hoy</a>
+      <a class="btn btn-sm" data-wa="Hola VIP Training, quiero empezar a entrenar" target="_blank" rel="noreferrer">Empieza hoy</a>
       <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
@@ -57,7 +59,7 @@
     <a href="#espacio">El espacio</a>
     <a href="#comunidad">Comunidad</a>
     <a href="#horario">Horario</a>
-    <a class="mm-wa" href="https://wa.me/56955366758?text=Hola%20VIP%20Training%2C%20quiero%20empezar%20a%20entrenar" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+    <a class="mm-wa" data-wa="Hola VIP Training, quiero empezar a entrenar" target="_blank" rel="noreferrer">WhatsApp ↗</a>
   </div>
 
   <main>
@@ -71,193 +73,92 @@
 
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="mono kicker"><span class="dot"></span>PORTUGAL 681 — SANTIAGO CENTRO</p>
+          <p class="mono kicker"><span class="dot"></span><span data-t="portada.kicker"></span></p>
           <h1 class="hero-title">
-            <span class="line"><span class="split">TRANSFORMA</span></span>
-            <span class="line"><span class="split">TU CUERPO.</span></span>
-            <span class="line"><span class="split outline">ELEVA TU</span></span>
-            <span class="line"><span class="split neon">NIVEL<em>_</em></span></span>
+            <span class="line"><span class="split" data-t="portada.linea1"></span></span>
+            <span class="line"><span class="split" data-t="portada.linea2"></span></span>
+            <span class="line"><span class="split outline" data-t="portada.linea3"></span></span>
+            <span class="line"><span class="split neon"><span data-t="portada.linea4"></span><em>_</em></span></span>
           </h1>
-          <p class="hero-sub">Personal Training + Tecnología. Cross, Boxeo y Funcional en un gym que suena, brilla y te empuja a dar una más.</p>
+          <p class="hero-sub" data-t="portada.bajada"></p>
           <div class="hero-cta">
-            <a class="btn magnetic" href="https://wa.me/56955366758?text=Hola%20VIP%20Training%2C%20quiero%20empezar%20a%20entrenar" target="_blank" rel="noreferrer"><span>Empieza hoy</span><b>↗</b></a>
+            <a class="btn" data-wa="Hola VIP Training, quiero empezar a entrenar" target="_blank" rel="noreferrer"><span>Empieza hoy</span><b>↗</b></a>
             <a class="btn btn-ghost" href="#disciplinas"><span>Ver disciplinas</span><b>↓</b></a>
           </div>
         </div>
 
-        <!-- Player estilo historia de Instagram -->
         <div class="hero-stage">
-          <div class="story" data-tilt>
-            <div class="story-bars"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="story-head"><span class="story-avatar">VIP</span><b>viptraining_cl</b><small data-story-label>Sala de máquinas</small></div>
-            <div class="story-media">
-              <img src="img/sala-completa.webp" alt="Sala de máquinas de VIP Training con luces LED" data-label="Sala de máquinas">
-              <img src="img/clase-cross.webp" alt="Clase grupal de Cross Training sobre césped" data-label="Clase de Cross">
-              <img src="img/peso-muerto.webp" alt="Alumna haciendo peso muerto con barra olímpica" data-label="Multifuncional">
-              <img src="img/maquina-fuerza.webp" alt="Alumna entrenando en máquina de fuerza" data-label="Personal Training">
-              <img src="img/familia-vip.webp" alt="Comunidad de VIP Training reunida en el gimnasio" data-label="Familia VIP">
-            </div>
-            <div class="story-foot"><span>Responde a viptraining_cl…</span><b>♡</b></div>
+          <div class="story">
+            <div class="story-bars"></div>
+            <div class="story-head"><span class="story-avatar">VIP</span><b data-ig></b><small data-story-label></small></div>
+            <div class="story-media"></div>
+            <div class="story-foot"><span>Responde a <span data-ig></span>…</span><b>♡</b></div>
           </div>
           <div class="sticker s1"><b>💪🏽</b> Personal Training<br>+ Tecnología</div>
           <div class="sticker s2"><b>🥊</b> Cross · Boxeo · Funcional</div>
-          <div class="sticker s3"><span class="mono">COMUNIDAD</span><strong data-count="3340">0</strong><small>en Instagram</small></div>
+          <div class="sticker s3"><span class="mono">COMUNIDAD</span><strong data-count-key="seguidores">0</strong><small>en Instagram</small></div>
         </div>
       </div>
 
       <div class="hero-hud mono" aria-label="Horario resumido">
-        <span>L—V <b>06:00—22:00</b></span>
-        <span>SÁB <b>08:00—16:00</b></span>
-        <span>DOM + FER <b>09:00—15:00</b></span>
+        <span>L—V <b data-hours="semana"></b></span>
+        <span>SÁB <b data-hours="sabado"></b></span>
+        <span>DOM + FER <b data-hours="domingo"></b></span>
         <a href="#disciplinas" class="scroll-cue">SCROLL <i></i></a>
       </div>
     </section>
 
     <!-- ============ MARQUEE ============ -->
     <section class="marquee" aria-label="Disciplinas">
-      <div class="mq-row mq-a"><div class="mq-track">
-        <span>CROSS</span><i>✦</i><span>BOXEO</span><i>✦</i><span>FUNCIONAL</span><i>✦</i><span>PERSONAL TRAINING</span><i>✦</i><span>MULTIFUNCIONAL</span><i>✦</i>
-        <span>CROSS</span><i>✦</i><span>BOXEO</span><i>✦</i><span>FUNCIONAL</span><i>✦</i><span>PERSONAL TRAINING</span><i>✦</i><span>MULTIFUNCIONAL</span><i>✦</i>
-      </div></div>
-      <div class="mq-row mq-b"><div class="mq-track">
-        <span>ELEVA TU NIVEL</span><i>●</i><span>NO ENTRENES SOLO</span><i>●</i><span>UNA MÁS</span><i>●</i>
-        <span>ELEVA TU NIVEL</span><i>●</i><span>NO ENTRENES SOLO</span><i>●</i><span>UNA MÁS</span><i>●</i>
-      </div></div>
+      <div class="mq-row mq-a"><div class="mq-track" data-franja="franja1"></div></div>
+      <div class="mq-row mq-b"><div class="mq-track" data-franja="franja2"></div></div>
     </section>
 
-    <!-- ============ DISCIPLINAS (scroll horizontal) ============ -->
+    <!-- ============ DISCIPLINAS ============ -->
     <section class="disc" id="disciplinas">
       <div class="disc-pin">
         <div class="disc-track">
           <article class="disc-intro">
             <p class="mono kicker"><span class="dot"></span>01 / DISCIPLINAS</p>
-            <h2>Elige<br>cómo quieres<br><span class="grad">romperla.</span></h2>
-            <p>Cinco formas de entrenar, un mismo objetivo: que salgas mejor de lo que entraste.</p>
+            <h2><span data-t="disciplinas.titulo"></span><br><span class="grad" data-t="disciplinas.destacado"></span></h2>
+            <p data-t="disciplinas.texto"></p>
             <span class="drag-hint mono">DESLIZA →</span>
           </article>
-
-          <article class="panel">
-            <div class="panel-media"><img src="img/maquina-fuerza.webp" alt="Entrenamiento personalizado en máquina de fuerza" loading="lazy"></div>
-            <div class="panel-body">
-              <span class="panel-num">01</span>
-              <h3>Personal<br>Training<span>+ Tecnología</span></h3>
-              <p>Entrenamiento personalizado con seguimiento real. Un coach que conoce tu objetivo y ajusta cada sesión para que avances de forma segura.</p>
-              <ul class="tags"><li>1 a 1</li><li>Seguimiento</li><li>Plan a tu medida</li></ul>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-media"><img src="img/clase-cross.webp" alt="Clase de Cross Training en VIP" loading="lazy"></div>
-            <div class="panel-body">
-              <span class="panel-num">02</span>
-              <h3>Cross<br>Training</h3>
-              <p>Fuerza construida con movimientos funcionales. Clases con energía de grupo donde el coach dice “una más”… y nadie se quiere salir de la fila.</p>
-              <ul class="tags"><li>Fuerza</li><li>Funcional</li><li>En grupo</li></ul>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-media"><img src="img/entrenador-foco.webp" alt="Entrenador de VIP concentrado antes de la clase" loading="lazy"></div>
-            <div class="panel-body">
-              <span class="panel-num">03</span>
-              <h3>Boxeo</h3>
-              <p>Técnica, coordinación y cardio que se siente. La forma más honesta de soltar el día y salir con la cabeza liviana.</p>
-              <ul class="tags"><li>Técnica</li><li>Cardio</li><li>Descarga</li></ul>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-media"><img src="img/peso-muerto.webp" alt="Alumna levantando barra en clase multifuncional" loading="lazy"></div>
-            <div class="panel-body">
-              <span class="panel-num">04</span>
-              <h3>Multi<br>funcional</h3>
-              <p>No es solo resistir. Es enfrentarte contigo mismo en cada repetición. Clases de entrenamiento funcional con acceso a la sala de pesas.</p>
-              <ul class="tags"><li>Clases</li><li>Sala de pesas</li><li>Todos los niveles</li></ul>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-media"><img src="img/sala-completa.webp" alt="Sala de máquinas amplia con iluminación LED" loading="lazy"></div>
-            <div class="panel-body">
-              <span class="panel-num">05</span>
-              <h3>Sala de<br>máquinas</h3>
-              <p>Espacios amplios, máquinas de última generación y climatización para rendir al máximo, a tu ritmo, todos los días.</p>
-              <ul class="tags"><li>Peso libre</li><li>Máquinas</li><li>Climatizado</li></ul>
-            </div>
-          </article>
+          <!-- paneles desde data/disciplinas.json -->
         </div>
       </div>
     </section>
 
     <!-- ============ STATS ============ -->
     <section class="stats" aria-label="VIP en números">
-      <div class="stat"><strong data-count="3340">0</strong><span>personas en la comunidad de Instagram</span></div>
-      <div class="stat"><strong data-count="5">0</strong><span>coaches que te acompañan de cerca</span></div>
-      <div class="stat"><strong data-count="16">0</strong><span>horas abierto de lunes a viernes</span></div>
+      <div class="stat"><strong data-count-key="seguidores">0</strong><span>personas en la comunidad de Instagram</span></div>
+      <div class="stat"><strong data-count-key="coaches">0</strong><span>coaches que te acompañan de cerca</span></div>
+      <div class="stat"><strong data-count-key="horas">0</strong><span>horas abierto de lunes a viernes</span></div>
       <div class="stat"><strong data-count="7">0</strong><span>días a la semana, feriados incluidos</span></div>
+    </section>
+
+    <!-- ============ FLYER ============ -->
+    <section class="flyer" id="promo" hidden>
+      <div class="flyer-card">
+        <figure class="flyer-media"><img alt="" loading="lazy"></figure>
+        <div class="flyer-body">
+          <p class="mono kicker"><span class="dot"></span><span data-t="flyer.etiqueta"></span></p>
+          <h2 data-t="flyer.titulo"></h2>
+          <p class="flyer-text" data-t="flyer.descripcion"></p>
+          <a class="btn" data-flyer-wa target="_blank" rel="noreferrer"><span data-t="flyer.boton"></span><b>↗</b></a>
+          <p class="mono flyer-until" data-flyer-until></p>
+        </div>
+      </div>
     </section>
 
     <!-- ============ COACHES ============ -->
     <section class="coaches" id="coaches">
       <div class="sec-head">
         <p class="mono kicker"><span class="dot"></span>02 / EL EQUIPO</p>
-        <h2>No entrenes <span class="grad">solo.</span></h2>
-        <p>Entrena con guía, constancia y propósito. Pasa el cursor (o toca) cada nombre.</p>
+        <h2><span data-t="equipo.titulo"></span> <span class="grad" data-t="equipo.destacado"></span></h2>
+        <p data-t="equipo.texto"></p>
       </div>
-
-      <ul class="coach-list">
-        <li class="coach" data-img="img/coach-yaxi.webp">
-          <button class="coach-row" aria-expanded="false">
-            <span class="c-num mono">01</span><span class="c-name">Yaxi Fernández</span><span class="c-role mono">Personal trainer</span><span class="c-plus">+</span>
-          </button>
-          <div class="coach-detail"><div>
-            <img src="img/coach-yaxi.webp" alt="Yaxi Fernández, entrenador personal" loading="lazy">
-            <p>Personal trainer certificado. Especializado en entrenamientos para <b>fortalecer, recuperar y desarrollar capacidades físicas</b> de forma segura y progresiva.</p>
-            <a class="mono" href="https://www.instagram.com/yxtrainer/" target="_blank" rel="noreferrer">@yxtrainer ↗</a>
-          </div></div>
-        </li>
-        <li class="coach" data-img="img/coach-freddy.webp">
-          <button class="coach-row" aria-expanded="false">
-            <span class="c-num mono">02</span><span class="c-name">Freddy Berríos</span><span class="c-role mono">Cross Training</span><span class="c-plus">+</span>
-          </button>
-          <div class="coach-detail"><div>
-            <img src="img/coach-freddy.webp" alt="Freddy Berríos, coach de Cross Training" loading="lazy">
-            <p>Unos 13 años como entrenador. Enfoque en <b>fuerza con movimientos funcionales</b>, evaluación de la composición corporal y nutrición deportiva.</p>
-            <a class="mono" href="https://www.instagram.com/berrios__freddy/" target="_blank" rel="noreferrer">@berrios__freddy ↗</a>
-          </div></div>
-        </li>
-        <li class="coach" data-img="img/coach-maanyeli.webp">
-          <button class="coach-row" aria-expanded="false">
-            <span class="c-num mono">03</span><span class="c-name">Maanyeli Delgado</span><span class="c-role mono">Personal trainer</span><span class="c-plus">+</span>
-          </button>
-          <div class="coach-detail"><div>
-            <img src="img/coach-maanyeli.webp" alt="Maanyeli Delgado, entrenadora personal" loading="lazy">
-            <p>Personal trainer certificada. Especializada en <b>entrenamiento femenino, hipertrofia y estética corporal</b>, con seguimiento personalizado y educación nutricional.</p>
-            <a class="mono" href="https://www.instagram.com/manyefit/" target="_blank" rel="noreferrer">@manyefit ↗</a>
-          </div></div>
-        </li>
-        <li class="coach" data-img="img/coach-george.webp">
-          <button class="coach-row" aria-expanded="false">
-            <span class="c-num mono">04</span><span class="c-name">George Sánchez</span><span class="c-role mono">Entrenador personalizado</span><span class="c-plus">+</span>
-          </button>
-          <div class="coach-detail"><div>
-            <img src="img/coach-george.webp" alt="George Sánchez, entrenador personalizado" loading="lazy">
-            <p>Entrenador personalizado. Te acompaña desde el primer día para que <b>entrenes con técnica y constancia</b>, sin adivinar qué hacer.</p>
-            <a class="mono" href="https://wa.me/56955366758?text=Hola%2C%20quiero%20entrenar%20con%20George" target="_blank" rel="noreferrer">Agenda con George ↗</a>
-          </div></div>
-        </li>
-        <li class="coach" data-img="img/coach-aliana.webp">
-          <button class="coach-row" aria-expanded="false">
-            <span class="c-num mono">05</span><span class="c-name">Aliana González</span><span class="c-role mono">Entrenadora personalizada</span><span class="c-plus">+</span>
-          </button>
-          <div class="coach-detail"><div>
-            <img src="img/coach-aliana.webp" alt="Aliana González, entrenadora personalizada" loading="lazy">
-            <p>Entrenadora personalizada. Energía, cercanía y un plan que <b>se adapta a ti</b> y a tu objetivo.</p>
-            <a class="mono" href="https://wa.me/56955366758?text=Hola%2C%20quiero%20entrenar%20con%20Aliana" target="_blank" rel="noreferrer">Agenda con Aliana ↗</a>
-          </div></div>
-        </li>
-      </ul>
-      <div class="coach-float" aria-hidden="true"><img alt=""></div>
+      <ul class="coach-list"></ul>
     </section>
 
     <!-- ============ PRIMER DÍA ============ -->
@@ -266,71 +167,31 @@
         <p class="mono kicker"><span class="dot"></span>03 / TU PRIMER DÍA</p>
         <blockquote>
           <span class="q-mark">“</span>
-          <p class="reveal-words">No necesitas saberlo todo para comenzar. <em>Nosotros te ayudamos.</em></p>
+          <p class="reveal-words"><span data-t="primer.frase"></span> <em data-t="primer.destacado"></em></p>
         </blockquote>
-        <p class="first-note">Si nunca has pisado un gimnasio, este es tu lugar. Puedes tener 20 o 60: la energía y la fuerza no tienen edad.</p>
+        <p class="first-note" data-t="primer.nota"></p>
       </div>
-      <ol class="steps">
-        <li><span class="mono">PASO 01</span><h3>Escríbenos</h3><p>Cuéntanos tu objetivo por WhatsApp y resolvemos tus dudas.</p></li>
-        <li><span class="mono">PASO 02</span><h3>Ven a conocernos</h3><p>Portugal 681. Recorre la sala, conoce a los coaches y siente el ambiente.</p></li>
-        <li><span class="mono">PASO 03</span><h3>Entrena con guía</h3><p>Empieza con acompañamiento. Técnica primero, resultados después.</p></li>
-      </ol>
+      <ol class="steps"></ol>
     </section>
 
-    <!-- ============ EL ESPACIO (bento) ============ -->
+    <!-- ============ EL ESPACIO ============ -->
     <section class="space" id="espacio">
       <div class="sec-head">
         <p class="mono kicker"><span class="dot"></span>04 / EL ESPACIO</p>
-        <h2>Un gym que <span class="grad">se siente.</span></h2>
+        <h2><span data-t="espacio.titulo"></span> <span class="grad" data-t="espacio.destacado"></span></h2>
       </div>
-      <div class="bento">
-        <figure class="tile t-big spot"><img src="img/gym-interior.webp" alt="Sala principal de VIP Training con barras y máquinas" loading="lazy"><figcaption><b>La sala</b><span>Barras, racks y máquinas bajo luces LED.</span></figcaption></figure>
-        <figure class="tile t-tall spot"><img src="img/gym-turf.webp" alt="Zona de césped funcional con banca y mancuernas" loading="lazy"><figcaption><b>Zona funcional</b><span>Césped, TRX y espacio para moverte.</span></figcaption></figure>
-        <figure class="tile t-cafe spot"><img src="img/gym-lounge.webp" alt="Lounge y café de VIP Training con sillas y letrero neón" loading="lazy"><figcaption><b>Al mal tiempo…</b><span>Buena música, buen café. Café en mano, energía en el cuerpo.</span></figcaption></figure>
-        <figure class="tile t-mural spot"><img src="img/mural-fuerza.webp" alt="Mural artístico de un atleta pintado en el muro del gimnasio" loading="lazy"><figcaption><b>La fuerza también se pinta</b><span>Mural por @gonzalo_matiz.</span></figcaption></figure>
-        <div class="tile t-list">
-          <p class="mono">INCLUIDO EN EL AMBIENTE</p>
-          <ul>
-            <li><i>✓</i> Espacios amplios</li>
-            <li><i>✓</i> Máquinas de última generación</li>
-            <li><i>✓</i> Climatización</li>
-            <li><i>✓</i> Buena música, siempre</li>
-            <li><i>✓</i> Estacionamiento gratis cerca</li>
-          </ul>
-        </div>
-      </div>
+      <div class="bento"></div>
     </section>
 
     <!-- ============ COMUNIDAD ============ -->
     <section class="community" id="comunidad">
       <div class="sec-head">
         <p class="mono kicker"><span class="dot"></span>05 / FAMILIA VIP</p>
-        <h2>Más que un gym,<br><span class="grad">una familia.</span></h2>
-        <p>Eventos, noches temáticas, clases al aire libre y memes que duelen de lo reales. Todo pasa en <a href="https://www.instagram.com/viptraining_cl/" target="_blank" rel="noreferrer">@viptraining_cl</a>.</p>
+        <h2><span data-t="comunidad.titulo"></span><br><span class="grad" data-t="comunidad.destacado"></span></h2>
+        <p><span data-t="comunidad.texto"></span> Todo pasa en <a data-ig-link target="_blank" rel="noreferrer">@<span data-ig></span></a>.</p>
       </div>
-      <div class="wall">
-        <div class="wall-col" data-speed="-60">
-          <a class="reel" href="https://www.instagram.com/reel/DOZpbAMDDTC/" target="_blank" rel="noreferrer"><img src="img/familia-vip.webp" alt="Foto grupal de la comunidad VIP" loading="lazy"><span>“Hemos creado una familia de puras personas fuertes y disciplinadas.”</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DP6_QkxEWJK/" target="_blank" rel="noreferrer"><img src="img/dominadas.webp" alt="Alumno haciendo dominadas" loading="lazy"><span>La edad es solo un número 💪🏻</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DJRej6Jx4Z0/" target="_blank" rel="noreferrer"><img src="img/vlog-sala.webp" alt="Mañana de entrenamiento en VIP" loading="lazy"><span>☀️ Así se despierta la semana en VIP</span></a>
-        </div>
-        <div class="wall-col" data-speed="50">
-          <a class="reel" href="https://www.instagram.com/reel/DLBJAoDuXe2/" target="_blank" rel="noreferrer"><img src="img/evento-90s.webp" alt="Noche temática de los 90 en el gimnasio" loading="lazy"><span>¿Entrenaste esa noche? Noche 90’s ✨</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DXxGsHqR3Bd/" target="_blank" rel="noreferrer"><img src="img/neon-sala.webp" alt="Sala con luces neón durante el entrenamiento" loading="lazy"><span>Buena música, mejor energía.</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DJzJyrptTDd/" target="_blank" rel="noreferrer"><img src="img/vlog-pesas.webp" alt="Drop set de bíceps con disco" loading="lazy"><span>💥 Drop set. Técnica, fuerza y enfoque.</span></a>
-        </div>
-        <div class="wall-col" data-speed="-90">
-          <a class="reel" href="https://www.instagram.com/reel/DOJ7Xl8EcDg/" target="_blank" rel="noreferrer"><img src="img/only-for-men.webp" alt="Partido de vóleibol en la zona de césped" loading="lazy"><span>🏐 #OnlyForMen</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DOekNlkEc3L/" target="_blank" rel="noreferrer"><img src="img/mural-gorila.webp" alt="Invitados frente al mural del gorila" loading="lazy"><span>Un 23 de septiembre se entrena distinto.</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DMu3Rbus-_v/" target="_blank" rel="noreferrer"><img src="img/multifuncional.webp" alt="Clase multifuncional empujando trineo" loading="lazy"><span>No entrenes solo.</span></a>
-        </div>
-        <div class="wall-col" data-speed="40">
-          <a class="reel" href="https://www.instagram.com/p/DbGyqYXIP6J/" target="_blank" rel="noreferrer"><img src="img/gluteos.webp" alt="Alumna entrenando en la sala" loading="lazy"><span>Disciplina, incluso cuando los resultados aún no se ven.</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DWtwpAYkRH1/" target="_blank" rel="noreferrer"><img src="img/sala-maquinas.webp" alt="Coach corrigiendo técnica a un alumno" loading="lazy"><span>Llegas con mil cosas en la cabeza… te vas más liviano.</span></a>
-          <a class="reel" href="https://www.instagram.com/reel/DMTXkV4xJge/" target="_blank" rel="noreferrer"><img src="img/box-funcional.webp" alt="Zona funcional con cajones y colchonetas" loading="lazy"><span>Enfréntate contigo mismo en cada repetición.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-ghost ig-btn" href="https://www.instagram.com/viptraining_cl/" target="_blank" rel="noreferrer"><span>Síguenos en Instagram</span><b>↗</b></a>
+      <div class="wall"></div>
+      <a class="btn btn-ghost ig-btn" data-ig-link target="_blank" rel="noreferrer"><span>Síguenos en Instagram</span><b>↗</b></a>
     </section>
 
     <!-- ============ HORARIO + UBICACIÓN ============ -->
@@ -346,16 +207,16 @@
           <span class="mono now-time" data-now>--:--</span>
         </div>
         <div class="tl-scale mono" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
-        <div class="tl-row" data-days="1,2,3,4,5" data-open="6" data-close="22">
-          <div class="tl-label"><b>Lunes a viernes</b><span class="mono">06:00 — 22:00</span></div>
+        <div class="tl-row" data-days="1,2,3,4,5" data-key="semana">
+          <div class="tl-label"><b>Lunes a viernes</b><span class="mono" data-hours="semana"></span></div>
           <div class="tl-track"><span class="tl-open"></span><span class="tl-now"></span></div>
         </div>
-        <div class="tl-row" data-days="6" data-open="8" data-close="16">
-          <div class="tl-label"><b>Sábados</b><span class="mono">08:00 — 16:00</span></div>
+        <div class="tl-row" data-days="6" data-key="sabado">
+          <div class="tl-label"><b>Sábados</b><span class="mono" data-hours="sabado"></span></div>
           <div class="tl-track"><span class="tl-open"></span><span class="tl-now"></span></div>
         </div>
-        <div class="tl-row" data-days="0" data-open="9" data-close="15">
-          <div class="tl-label"><b>Domingos y feriados</b><span class="mono">09:00 — 15:00</span></div>
+        <div class="tl-row" data-days="0" data-key="domingo">
+          <div class="tl-label"><b>Domingos y feriados</b><span class="mono" data-hours="domingo"></span></div>
           <div class="tl-track"><span class="tl-open"></span><span class="tl-now"></span></div>
         </div>
         <p class="board-note mono">Hora de Santiago · En feriados rige el horario de domingo.</p>
@@ -365,36 +226,36 @@
         <div class="where-info">
           <div class="info-card">
             <span class="mono">DIRECCIÓN</span>
-            <h3>Portugal 681<br>Santiago Centro</h3>
-            <p>A 3 cuadras del Metro Irarrázaval.</p>
-            <a class="link-arrow" href="https://maps.google.com/?q=VIP+Training+Gym+Portugal+681+Santiago" target="_blank" rel="noreferrer">Cómo llegar ↗</a>
+            <h3><span data-t="ajustes.direccion"></span><br><span data-t="ajustes.comuna"></span></h3>
+            <p data-t="ajustes.referencia"></p>
+            <a class="link-arrow" data-maps target="_blank" rel="noreferrer">Cómo llegar ↗</a>
           </div>
           <div class="info-card park">
             <span class="mono">¿VIENES EN AUTO?</span>
             <h3><span class="grad">Estacionamiento gratis</span></h3>
-            <p>Fray Camilo Henríquez 640 · 1 hora y media de uso, seguro.</p>
+            <p data-t="ajustes.estacionamiento"></p>
           </div>
           <div class="info-card">
             <span class="mono">WHATSAPP</span>
-            <h3>+56 9 5536 6758</h3>
-            <a class="link-arrow" href="https://wa.me/56955366758" target="_blank" rel="noreferrer">Escríbenos ↗</a>
+            <h3 data-phone></h3>
+            <a class="link-arrow" data-wa="" target="_blank" rel="noreferrer">Escríbenos ↗</a>
           </div>
         </div>
         <div class="map">
-          <iframe title="Mapa de VIP Training Gym, Portugal 681, Santiago" src="https://maps.google.com/maps?q=VIP%20Training%20Gym%2C%20Portugal%20681%2C%20Santiago%2C%20Chile&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <span class="map-pin mono">VIP · 681</span>
+          <iframe title="Mapa de VIP Training Gym" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <span class="map-pin mono">VIP · <span data-t="ajustes.direccion"></span></span>
         </div>
       </div>
     </section>
 
-    <!-- ============ CTA FINAL: 5,4,3,2,1 ============ -->
+    <!-- ============ CTA FINAL ============ -->
     <section class="final">
       <div class="countdown" aria-hidden="true"><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
       <div class="final-inner">
-        <p class="mono kicker"><span class="dot"></span>…Y DAS EL PRIMER PASO</p>
-        <h2 class="final-title">EMPIEZA<br><span class="neon">HOY.</span></h2>
-        <p>Entrenar es elegirte, una y otra vez.</p>
-        <a class="btn btn-xl magnetic" href="https://wa.me/56955366758?text=Hola%20VIP%20Training%2C%20quiero%20empezar%20hoy" target="_blank" rel="noreferrer"><span>Escríbenos por WhatsApp</span><b>↗</b></a>
+        <p class="mono kicker"><span class="dot"></span><span data-t="cierre.kicker"></span></p>
+        <h2 class="final-title"><span data-t="cierre.titulo"></span><br><span class="neon" data-t="cierre.destacado"></span></h2>
+        <p data-t="cierre.texto"></p>
+        <a class="btn btn-xl" data-cierre-wa target="_blank" rel="noreferrer"><span data-t="cierre.boton"></span><b>↗</b></a>
       </div>
     </section>
   </main>
@@ -404,18 +265,27 @@
     <div class="footer-row">
       <div>
         <p class="mono">VIP TRAINING GYM</p>
-        <p>Portugal 681, Santiago Centro, Chile</p>
+        <p><span data-t="ajustes.direccion"></span>, <span data-t="ajustes.comuna"></span>, Chile</p>
       </div>
       <div class="footer-links">
-        <a href="https://www.instagram.com/viptraining_cl/" target="_blank" rel="noreferrer">Instagram ↗</a>
-        <a href="https://wa.me/56955366758" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+        <a data-ig-link target="_blank" rel="noreferrer">Instagram ↗</a>
+        <a data-wa="" target="_blank" rel="noreferrer">WhatsApp ↗</a>
         <a href="#top">Volver arriba ↑</a>
       </div>
       <p class="mono footer-copy">© <span id="year"></span> · TRANSFORMA TU CUERPO. ELEVA TU NIVEL.</p>
     </div>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/56955366758?text=Hola%20VIP%20Training%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp">
+  <!-- Ventana emergente del flyer -->
+  <div class="popup" role="dialog" aria-modal="true" aria-label="Promoción" hidden>
+    <div class="popup-card">
+      <button class="popup-close" aria-label="Cerrar">×</button>
+      <img alt="">
+      <a class="btn" data-flyer-wa target="_blank" rel="noreferrer"><span data-t="flyer.boton"></span><b>↗</b></a>
+    </div>
+  </div>
+
+  <a class="wa-float" data-wa="Hola VIP Training, quiero información" target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
   </a>
 

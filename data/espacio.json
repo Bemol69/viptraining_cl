@@ -1,0 +1,42 @@
+{
+  "titulo": "Un gym que",
+  "destacado": "se siente.",
+  "galeria": [
+    {
+      "archivo": "/img/gym-interior.webp",
+      "titulo": "La sala",
+      "texto": "Barras, racks y máquinas bajo luces LED.",
+      "tamano": "grande",
+      "descripcion": "Sala principal de VIP Training con barras y máquinas"
+    },
+    {
+      "archivo": "/img/gym-turf.webp",
+      "titulo": "Zona funcional",
+      "texto": "Césped, TRX y espacio para moverte.",
+      "tamano": "alta",
+      "descripcion": "Zona de césped funcional con banca y mancuernas"
+    },
+    {
+      "archivo": "/img/gym-lounge.webp",
+      "titulo": "Al mal tiempo…",
+      "texto": "Buena música, buen café. Café en mano, energía en el cuerpo.",
+      "tamano": "normal",
+      "descripcion": "Lounge y café de VIP Training con letrero neón"
+    },
+    {
+      "archivo": "/img/mural-fuerza.webp",
+      "titulo": "La fuerza también se pinta",
+      "texto": "Mural por @gonzalo_matiz.",
+      "tamano": "normal",
+      "descripcion": "Mural artístico de un atleta en el muro del gimnasio"
+    }
+  ],
+  "incluido_titulo": "Incluido en el ambiente",
+  "incluido": [
+    "Espacios amplios",
+    "Máquinas de última generación",
+    "Climatización",
+    "Buena música, siempre",
+    "Estacionamiento gratis cerca"
+  ]
+}

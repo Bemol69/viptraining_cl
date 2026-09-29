@@ -1,0 +1,272 @@
+# Panel /admin de VIP Training Gym (Sveltia CMS)
+# Cada cambio que se guarda aquí crea un commit en GitHub y Vercel publica la web en ~30 segundos.
+# Las fotos y videos se guardan en img/uploads (las fotos se achican y pasan a WebP solas).
+
+backend:
+  name: github
+  repo: Bemol69/viptraining_cl
+  branch: main
+  commit_messages:
+    create: "Web: crea {{collection}} «{{slug}}»"
+    update: "Web: actualiza {{collection}} «{{slug}}»"
+    delete: "Web: elimina {{collection}} «{{slug}}»"
+    uploadMedia: "Web: sube archivo {{path}}"
+    deleteMedia: "Web: elimina archivo {{path}}"
+
+media_folder: img/uploads
+public_folder: /img/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+media_libraries:
+  default:
+    config:
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1400
+          height: 1400
+
+collections:
+  # =================== PROMOCIONES ===================
+  - name: promos
+    label: Flyer y promociones
+    icon: campaign
+    description: "El flyer de la promo del mes. Aparece como sección y como ventana emergente al entrar a la web."
+    files:
+      - name: flyer
+        label: Flyer de la promo
+        file: data/flyer.json
+        format: json
+        fields:
+          - { name: mostrar, label: Mostrar flyer en la web, widget: boolean, default: true, hint: "Apágalo cuando no haya promo vigente." }
+          - { name: popup, label: Mostrar también como ventana emergente, widget: boolean, default: true, hint: "Aparece una vez por visita, a los pocos segundos de entrar." }
+          - name: vence
+            label: Válido hasta
+            widget: datetime
+            format: "YYYY-MM-DD"
+            time_format: false
+            required: false
+            hint: "Opcional. El día siguiente el flyer se esconde solo. Vacío = sin fecha de término."
+          - name: imagen
+            label: Imagen o video del flyer
+            widget: file
+            accept: "image/*,video/mp4,video/webm"
+            media_folder: /img/flyer
+            public_folder: /img/flyer
+            hint: "Ideal vertical (1080×1350 o 1080×1920, formato historia). Si subes un video, no se muestra la ventana emergente."
+          - { name: etiqueta, label: Etiqueta pequeña, widget: string, required: false, hint: "Ej: Promo del mes" }
+          - { name: titulo, label: Título, widget: string, hint: "Ej: Matrícula gratis" }
+          - { name: descripcion, label: Texto de la promo, widget: text }
+          - { name: boton, label: Texto del botón, widget: string, default: "Quiero esta promo" }
+          - { name: mensaje_whatsapp, label: Mensaje de WhatsApp, widget: string, hint: "Lo que se escribe solo cuando tocan el botón." }
+
+  # =================== CONTENIDO DE LA PÁGINA ===================
+  - name: secciones
+    label: Secciones de la página
+    icon: dashboard
+    description: "Textos, fotos y videos de cada sección, en el mismo orden en que aparecen en la web."
+    files:
+      # ---------- PORTADA ----------
+      - name: portada
+        label: "Portada y franjas"
+        file: data/portada.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño sobre el título, widget: string }
+          - { name: linea1, label: "Título · línea 1", widget: string }
+          - { name: linea2, label: "Título · línea 2", widget: string }
+          - { name: linea3, label: "Título · línea 3 (contorno)", widget: string }
+          - { name: linea4, label: "Título · línea 4 (neón)", widget: string }
+          - { name: bajada, label: Texto bajo el título, widget: text }
+          - name: historias
+            label: Historias (teléfono de la portada)
+            label_singular: historia
+            widget: list
+            min: 1
+            summary: "{{etiqueta}}"
+            hint: "Se pasan solas como una historia de Instagram. Puedes arrastrarlas para cambiar el orden."
+            fields:
+              - { name: archivo, label: Foto o video vertical, widget: file, accept: "image/*,video/mp4,video/webm" }
+              - { name: etiqueta, label: Etiqueta, widget: string, hint: "Ej: Clase de Cross" }
+              - { name: descripcion, label: Qué se ve (para Google), widget: string, required: false }
+          - name: franja1
+            label: Franja de colores (frases)
+            label_singular: frase
+            widget: list
+            field: { name: frase, label: Frase, widget: string }
+          - name: franja2
+            label: Franja de contorno (frases)
+            label_singular: frase
+            widget: list
+            field: { name: frase, label: Frase, widget: string }
+
+      # ---------- 01 DISCIPLINAS ----------
+      - name: disciplinas
+        label: "01 · Disciplinas"
+        file: data/disciplinas.json
+        format: json
+        fields:
+          - { name: titulo, label: Título, widget: string }
+          - { name: destacado, label: Parte destacada del título, widget: string }
+          - { name: texto, label: Texto, widget: text }
+          - name: lista
+            label: Disciplinas
+            label_singular: disciplina
+            widget: list
+            summary: "{{titulo}}"
+            fields:
+              - { name: titulo, label: Nombre, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: string, required: false, hint: "Opcional. Ej: + Tecnología" }
+              - { name: foto, label: Foto o video, widget: file, accept: "image/*,video/mp4,video/webm" }
+              - { name: texto, label: Descripción, widget: text }
+              - name: etiquetas
+                label: Etiquetas
+                label_singular: etiqueta
+                widget: list
+                required: false
+                field: { name: etiqueta, label: Etiqueta, widget: string }
+
+      # ---------- 02 EQUIPO ----------
+      - name: equipo
+        label: "02 · Equipo (coaches)"
+        file: data/equipo.json
+        format: json
+        fields:
+          - { name: titulo, label: Título, widget: string }
+          - { name: destacado, label: Parte destacada del título, widget: string }
+          - { name: texto, label: Texto, widget: text }
+          - name: coaches
+            label: Coaches
+            label_singular: coach
+            widget: list
+            summary: "{{nombre}} · {{rol}}"
+            hint: "Arrástralos para cambiar el orden. Para agregar a alguien nuevo usa «Agregar coach»."
+            fields:
+              - { name: nombre, label: Nombre y apellido, widget: string }
+              - { name: rol, label: Especialidad, widget: string, hint: "Ej: Personal trainer, Cross Training" }
+              - { name: descripcion, label: Descripción, widget: text }
+              - { name: foto, label: Foto, widget: image, required: false, hint: "Foto cuadrada o vertical con la cara al centro. Se muestra en un círculo." }
+              - { name: instagram, label: Instagram, widget: string, required: false, hint: "Usuario sin @. Si lo dejas vacío, aparece un botón para agendar por WhatsApp." }
+              - { name: visible, label: Mostrar en la web, widget: boolean, default: true }
+
+      # ---------- 03 PRIMER DÍA ----------
+      - name: primer
+        label: "03 · Tu primer día"
+        file: data/primer-dia.json
+        format: json
+        fields:
+          - { name: frase, label: Frase grande, widget: string }
+          - { name: destacado, label: Final destacado de la frase, widget: string }
+          - { name: nota, label: Texto bajo la frase, widget: text }
+          - name: pasos
+            label: Pasos
+            label_singular: paso
+            widget: list
+            summary: "{{titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Texto, widget: text }
+
+      # ---------- 04 EL ESPACIO ----------
+      - name: espacio
+        label: "04 · El espacio (fotos y videos)"
+        file: data/espacio.json
+        format: json
+        fields:
+          - { name: titulo, label: Título, widget: string }
+          - { name: destacado, label: Parte destacada del título, widget: string }
+          - name: galeria
+            label: Fotos y videos
+            label_singular: foto o video
+            widget: list
+            summary: "{{titulo}} · {{tamano}}"
+            hint: "Agrega todas las fotos y videos que quieras y arrástralos para ordenarlos. Los videos se reproducen solos, sin sonido y en loop (MP4 de menos de 20 MB)."
+            fields:
+              - { name: archivo, label: Foto o video, widget: file, accept: "image/*,video/mp4,video/webm" }
+              - { name: titulo, label: Título, widget: string, required: false }
+              - { name: texto, label: Texto, widget: string, required: false }
+              - name: tamano
+                label: Tamaño en la grilla
+                widget: select
+                default: normal
+                options:
+                  - { label: "Normal (1 cuadro)", value: normal }
+                  - { label: "Grande (2×2)", value: grande }
+                  - { label: "Alta (1×2)", value: alta }
+                  - { label: "Ancha (2×1)", value: ancha }
+              - { name: descripcion, label: Qué se ve (para Google), widget: string, required: false }
+          - { name: incluido_titulo, label: Título del recuadro de colores, widget: string }
+          - name: incluido
+            label: Lista del recuadro de colores
+            label_singular: ítem
+            widget: list
+            field: { name: item, label: Ítem, widget: string }
+
+      # ---------- 05 COMUNIDAD ----------
+      - name: comunidad
+        label: "05 · Familia VIP (muro)"
+        file: data/comunidad.json
+        format: json
+        fields:
+          - { name: titulo, label: Título, widget: string }
+          - { name: destacado, label: Parte destacada del título, widget: string }
+          - { name: texto, label: Texto, widget: text }
+          - name: publicaciones
+            label: Publicaciones del muro
+            label_singular: publicación
+            widget: list
+            summary: "{{texto}}"
+            hint: "Fotos o videos verticales. Se reparten solos en columnas."
+            fields:
+              - { name: archivo, label: Foto o video, widget: file, accept: "image/*,video/mp4,video/webm" }
+              - { name: texto, label: Texto, widget: string, required: false }
+              - { name: enlace, label: Enlace a Instagram, widget: string, required: false, hint: "Opcional. Pega el link del post o reel." }
+              - { name: descripcion, label: Qué se ve (para Google), widget: string, required: false }
+
+      # ---------- CIERRE ----------
+      - name: cierre
+        label: "Cierre (Empieza hoy)"
+        file: data/cierre.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: titulo, label: Título, widget: string }
+          - { name: destacado, label: Palabra en neón, widget: string }
+          - { name: texto, label: Texto, widget: string }
+          - { name: boton, label: Texto del botón, widget: string }
+          - { name: mensaje_whatsapp, label: Mensaje de WhatsApp, widget: string }
+
+  # =================== AJUSTES ===================
+  - name: ajustes
+    label: Contacto y horarios
+    icon: settings
+    files:
+      - name: ajustes
+        label: Contacto, dirección y horarios
+        file: data/ajustes.json
+        format: json
+        fields:
+          - { name: whatsapp, label: WhatsApp, widget: string, pattern: ['^[0-9]{10,15}$', "Solo números con código de país, ej: 56955366758"], hint: "Con código de país, sin + ni espacios." }
+          - { name: instagram, label: Usuario de Instagram, widget: string, hint: "Sin @" }
+          - { name: seguidores, label: Seguidores en Instagram, widget: number, value_type: int, hint: "Se muestra en la portada y en los números." }
+          - { name: direccion, label: Dirección, widget: string }
+          - { name: comuna, label: Comuna, widget: string }
+          - { name: referencia, label: Cómo llegar, widget: string, required: false, hint: "Ej: A 3 cuadras del Metro Irarrázaval." }
+          - { name: estacionamiento, label: Estacionamiento, widget: string, required: false }
+          - { name: mapa, label: Búsqueda para el mapa, widget: string, hint: "Lo que se busca en Google Maps. Ej: VIP Training Gym, Portugal 681, Santiago, Chile" }
+          - name: horario
+            label: Horarios
+            widget: object
+            hint: "Formato HH:MM (24 horas). Deja un día vacío si ese día está cerrado."
+            fields:
+              - { name: semana_abre, label: "Lunes a viernes · abre", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM, ej 06:00"] }
+              - { name: semana_cierra, label: "Lunes a viernes · cierra", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM, ej 22:00"] }
+              - { name: sabado_abre, label: "Sábado · abre", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM"] }
+              - { name: sabado_cierra, label: "Sábado · cierra", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM"] }
+              - { name: domingo_abre, label: "Domingo y feriados · abre", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM"] }
+              - { name: domingo_cierra, label: "Domingo y feriados · cierra", widget: string, required: false, pattern: ['^\d{2}:\d{2}$', "Formato HH:MM"] }

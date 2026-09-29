@@ -1,0 +1,19 @@
+{
+  "frase": "No necesitas saberlo todo para comenzar.",
+  "destacado": "Nosotros te ayudamos.",
+  "nota": "Si nunca has pisado un gimnasio, este es tu lugar. Puedes tener 20 o 60: la energía y la fuerza no tienen edad.",
+  "pasos": [
+    {
+      "titulo": "Escríbenos",
+      "texto": "Cuéntanos tu objetivo por WhatsApp y resolvemos tus dudas."
+    },
+    {
+      "titulo": "Ven a conocernos",
+      "texto": "Portugal 681. Recorre la sala, conoce a los coaches y siente el ambiente."
+    },
+    {
+      "titulo": "Entrena con guía",
+      "texto": "Empieza con acompañamiento. Técnica primero, resultados después."
+    }
+  ]
+}

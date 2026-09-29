@@ -1,0 +1,79 @@
+{
+  "titulo": "Más que un gym,",
+  "destacado": "una familia.",
+  "texto": "Eventos, noches temáticas, clases al aire libre y memes que duelen de lo reales.",
+  "publicaciones": [
+    {
+      "archivo": "/img/familia-vip.webp",
+      "texto": "“Hemos creado una familia de puras personas fuertes y disciplinadas.”",
+      "enlace": "https://www.instagram.com/reel/DOZpbAMDDTC/",
+      "descripcion": "Foto grupal de la comunidad VIP"
+    },
+    {
+      "archivo": "/img/evento-90s.webp",
+      "texto": "¿Entrenaste esa noche? Noche 90’s ✨",
+      "enlace": "https://www.instagram.com/reel/DLBJAoDuXe2/",
+      "descripcion": "Noche temática de los 90 en el gimnasio"
+    },
+    {
+      "archivo": "/img/only-for-men.webp",
+      "texto": "🏐 #OnlyForMen",
+      "enlace": "https://www.instagram.com/reel/DOJ7Xl8EcDg/",
+      "descripcion": "Partido de vóleibol en la zona de césped"
+    },
+    {
+      "archivo": "/img/gluteos.webp",
+      "texto": "Disciplina, incluso cuando los resultados aún no se ven.",
+      "enlace": "https://www.instagram.com/p/DbGyqYXIP6J/",
+      "descripcion": "Alumna entrenando en la sala"
+    },
+    {
+      "archivo": "/img/dominadas.webp",
+      "texto": "La edad es solo un número 💪🏻",
+      "enlace": "https://www.instagram.com/reel/DP6_QkxEWJK/",
+      "descripcion": "Alumno haciendo dominadas"
+    },
+    {
+      "archivo": "/img/neon-sala.webp",
+      "texto": "Buena música, mejor energía.",
+      "enlace": "https://www.instagram.com/reel/DXxGsHqR3Bd/",
+      "descripcion": "Sala con luces neón durante el entrenamiento"
+    },
+    {
+      "archivo": "/img/mural-gorila.webp",
+      "texto": "Un 23 de septiembre se entrena distinto.",
+      "enlace": "https://www.instagram.com/reel/DOekNlkEc3L/",
+      "descripcion": "Invitados frente al mural del gorila"
+    },
+    {
+      "archivo": "/img/sala-maquinas.webp",
+      "texto": "Llegas con mil cosas en la cabeza… te vas más liviano.",
+      "enlace": "https://www.instagram.com/reel/DWtwpAYkRH1/",
+      "descripcion": "Coach corrigiendo técnica a un alumno"
+    },
+    {
+      "archivo": "/img/vlog-sala.webp",
+      "texto": "☀️ Así se despierta la semana en VIP",
+      "enlace": "https://www.instagram.com/reel/DJRej6Jx4Z0/",
+      "descripcion": "Mañana de entrenamiento en VIP"
+    },
+    {
+      "archivo": "/img/vlog-pesas.webp",
+      "texto": "💥 Drop set. Técnica, fuerza y enfoque.",
+      "enlace": "https://www.instagram.com/reel/DJzJyrptTDd/",
+      "descripcion": "Drop set de bíceps con disco"
+    },
+    {
+      "archivo": "/img/multifuncional.webp",
+      "texto": "No entrenes solo.",
+      "enlace": "https://www.instagram.com/reel/DMu3Rbus-_v/",
+      "descripcion": "Clase multifuncional empujando trineo"
+    },
+    {
+      "archivo": "/img/box-funcional.webp",
+      "texto": "Enfréntate contigo mismo en cada repetición.",
+      "enlace": "https://www.instagram.com/reel/DMTXkV4xJge/",
+      "descripcion": "Zona funcional con cajones y colchonetas"
+    }
+  ]
+}

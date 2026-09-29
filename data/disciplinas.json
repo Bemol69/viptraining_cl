@@ -1,0 +1,62 @@
+{
+  "titulo": "Elige cómo quieres",
+  "destacado": "romperla.",
+  "texto": "Cinco formas de entrenar, un mismo objetivo: que salgas mejor de lo que entraste.",
+  "lista": [
+    {
+      "titulo": "Personal Training",
+      "subtitulo": "+ Tecnología",
+      "foto": "/img/maquina-fuerza.webp",
+      "texto": "Entrenamiento personalizado con seguimiento real. Un coach que conoce tu objetivo y ajusta cada sesión para que avances de forma segura.",
+      "etiquetas": [
+        "1 a 1",
+        "Seguimiento",
+        "Plan a tu medida"
+      ]
+    },
+    {
+      "titulo": "Cross Training",
+      "subtitulo": "",
+      "foto": "/img/clase-cross.webp",
+      "texto": "Fuerza construida con movimientos funcionales. Clases con energía de grupo donde el coach dice “una más”… y nadie se quiere salir de la fila.",
+      "etiquetas": [
+        "Fuerza",
+        "Funcional",
+        "En grupo"
+      ]
+    },
+    {
+      "titulo": "Boxeo",
+      "subtitulo": "",
+      "foto": "/img/entrenador-foco.webp",
+      "texto": "Técnica, coordinación y cardio que se siente. La forma más honesta de soltar el día y salir con la cabeza liviana.",
+      "etiquetas": [
+        "Técnica",
+        "Cardio",
+        "Descarga"
+      ]
+    },
+    {
+      "titulo": "Multifuncional",
+      "subtitulo": "",
+      "foto": "/img/peso-muerto.webp",
+      "texto": "No es solo resistir. Es enfrentarte contigo mismo en cada repetición. Clases de entrenamiento funcional con acceso a la sala de pesas.",
+      "etiquetas": [
+        "Clases",
+        "Sala de pesas",
+        "Todos los niveles"
+      ]
+    },
+    {
+      "titulo": "Sala de máquinas",
+      "subtitulo": "",
+      "foto": "/img/sala-completa.webp",
+      "texto": "Espacios amplios, máquinas de última generación y climatización para rendir al máximo, a tu ritmo, todos los días.",
+      "etiquetas": [
+        "Peso libre",
+        "Máquinas",
+        "Climatizado"
+      ]
+    }
+  ]
+}
